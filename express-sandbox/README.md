@@ -2,9 +2,9 @@
 ```bash
 sudo npm install -g express
 sudo npm install -g express-generator
-express blog-system
-cd blog-system && npm install
-DEBUG=blog-system:* npm start
+express express-sandbox
+cd express-sandbox && npm install
+DEBUG=express-sandbox:* npm start
 ```
 
 # init project information
@@ -16,4 +16,4 @@ npm init
 ``bash
 vi package.json
 npm install
-``
+

@@ -13,19 +13,19 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "mongoose": "*"
+    "mongoose": "*",
+    "express-session": "*"
   },
-  "description": "```bash sudo npm install -g express sudo npm install -g express-generator express blog-system cd blog-system && npm install DEBUG=blog-system:* npm start ```",
+  "description": "first nodejs project",
   "main": "app.js",
   "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://alincode@github.com/alincode/nodejs-sandbox.git"
-  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "jade",
+    "mongodb",
+    "blog"
+  ],
   "author": "alincode",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alincode/nodejs-sandbox/issues"
-  },
-  "homepage": "https://github.com/alincode/nodejs-sandbox#readme"
+  "license": "ISC"
 }

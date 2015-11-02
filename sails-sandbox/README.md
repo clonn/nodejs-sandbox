@@ -24,4 +24,8 @@ sails lift
 ```
 http://localhost:1337/user/create?name=Alin
 http://localhost:1337/user
+http://localhost:1337/user/update/1?email=alincode@gmail.com
 ```
+
+# video
+* https://youtu.be/GK-tFvpIR7c
