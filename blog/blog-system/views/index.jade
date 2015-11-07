@@ -2,29 +2,44 @@ extends layout
 
 block content
 
-	div(style='float:left;' class='margin-10')
-		a(href='/') Home
-	
-	div(style='float:right')
-	
-		if(username && authenticated)
-			a(href='/users/signout' class='margin-10') Sign Out 
-			a(href='/users/add_article' class='margin-10') Add Article 
-			a(href='/users/profile' class='margin-10') Profile 
-			span #{username}
-		else
-			a(href='/users/signin' class='margin-10') Login 
-			a(href='/users/register' class='margin-10') Register 
-			a(href='/users/forget' class='margin-10') Forget Password 
+	div(class='site-wrapper')
+		div(class='site-wrapper-inner')
+			div(class='cover-container')
+				div(class='masthead clearfix')
+					div(class='inner')
+						h3(class='masthead-brand')= title
+						nav
+							ul(class='nav masthead-nav')
+								li(class='active')
+									a(href='/') Home
+								
+								if(username && authenticated)
+									li
+										a(href='/users/signout') Sign Out 
+									li
+										a(href='/users/add_article') Add Article 
+									li
+										a(href='/users/profile') Profile 
+									li
+										span #{username}
 
-	div(style='padding: 50px')
-		h1= title
+								else
+									li
+										a(href='/users/signin') Login 
+									li
+										a(href='/users/register') Register 						
+									li
+										a(href='/users/forget') Forget Password 
+					for blog in blogs
+						div(class='inner cover')
+							p(class='lead')= blog.username
+							p(class='lead')= blog.createDate
+							p(class='lead')= blog.article
+								a(href='/users/message/'+article.id, style='float:right;margin-top:105px;margin-right:20px;') Leave a message
 
-	for blog in blogs
-		div
-			div(style='float:left;margin-top:10px;')= blog.username
-			div(style='float:right;margin-top:10px;')= blog.createDate
-			br
-			div(style='clear:both')= blog.article
-				a(href='/users/message/'+article.id, style='float:right;margin-top:105px;margin-right:20px;') Leave a message
-			hr(style='margin-top:110px;')
+
+				div(class='mastfoot')
+					div(class='inner')
+						p Cover template for 
+							a(href='http://getbootstrap.com') Bootstrap, by
+							a(href='https://twitter.com/mdo') @mdo
