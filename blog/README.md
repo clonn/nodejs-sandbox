@@ -23,3 +23,5 @@
 -
 
 ## add db function
+- lib/db.js
+- set require db model
