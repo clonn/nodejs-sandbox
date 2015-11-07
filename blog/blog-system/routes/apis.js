@@ -6,7 +6,7 @@ var Blog = mongoose.model('Blog');
 var Comment = mongoose.model('Comment');
 
 /* 使用者登入會員 */
-router.get('/login', function(req, res, next){
+router.post('/login', function(req, res, next){
   if((!req.body.user) || (!req.body.passwd)){
     res.redirect('register');
     return;
@@ -18,7 +18,7 @@ router.get('/login', function(req, res, next){
 });
 
 /* 使用者新增文章 */
-router.get('add', function(req, res, next){
+router.get('/add', function(req, res, next){
   if(!req.session.name){
     res.redirect('/');
     return;
