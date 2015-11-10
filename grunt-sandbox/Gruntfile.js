@@ -1,5 +1,17 @@
 module.exports = function(grunt) {
 
+  grunt.initConfig({
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['src/1.js', 'src/2.js'],
+        dest: 'dist/built.js',
+      },
+    },
+  });
+
   grunt.registerTask('hello', function() {
     console.log('Hello');
   });
@@ -9,4 +21,5 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', ['hello', 'morning']);
+  grunt.loadNpmTasks('grunt-contrib-concat');
 };

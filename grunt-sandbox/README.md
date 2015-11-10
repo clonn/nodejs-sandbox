@@ -71,13 +71,27 @@ npm install grunt-contrib-concat --save-dev
 ```
 
 ### How to use other plugin
-
+[plugin](http://gruntjs.com/plugins)
+[grunt-contrib-concat ](https://www.npmjs.com/package/grunt-contrib-concat)
 ```
 grunt.loadNpmTasks('grunt-contrib-concat');
 ```
 
 ### setting grunt.initConfig
 
+```
+grunt.initConfig({
+  concat: {
+    options: {
+      separator: ';',
+    },
+    dist: {
+      src: ['src/1.js', 'src/2.js'],
+      dest: 'dist/built.js',
+    },
+  },
+});
+```
 ### run grunt plugin
 
 ```
