@@ -41,17 +41,19 @@ modules.exports = function(grunt){
 
 [document](http://gruntjs.com/creating-tasks)
 
-*** grunt.registerTask
-
 ```
-grunt.registerTask('hello', function(){
-  console.log('Hello');
-});
-grunt.registerTask('morning', function(){
-  console.log('Good morning!');
-});
+module.exports = function(grunt) {
 
-grunt.registerMultiTask('default', ['hello', 'morning']
+  grunt.registerTask('hello', function() {
+    console.log('Hello');
+  });
+
+  grunt.registerTask('morning', function() {
+    console.log('Good morning!');
+  });
+
+  grunt.registerTask('default', ['hello', 'morning']);
+};
 ```
 
 ```
