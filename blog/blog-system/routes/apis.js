@@ -14,11 +14,11 @@ router.post('/login', function(req, res, next){
   req.session.name = req.body.user;
   req.session.passwd = req.body.passwd;
   req.session.logined = true;
-  res.redirect('/');  
+  res.redirect('/');
 });
 
 /* 使用者新增文章 */
-router.get('/add', function(req, res, next){
+router.post('/add', function(req, res, next){
   if(!req.session.name){
     res.redirect('/');
     return;
@@ -64,16 +64,16 @@ router.get('/delete/:id', function(req, res, next){
     }
     res.redirect('/users/profile')
   });
-  
+
 });
 
 /* 文章留言 */
-router.get('comment/:id', function(req, res, next){
+router.post('/comment/:id', function(req, res, next) {
   if(!req.params.id){
     res.redirect('/');
     return;
   }
-  
+
   new Comment({
     visitor: req.body.visitor,
     comment: req.body.comment,

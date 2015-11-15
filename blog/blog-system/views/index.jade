@@ -1,45 +1,30 @@
-extends layout
+doctype html
+html
+	head
+		title= 'Blog System'
+	body
+		div(style='float:left;margin:10px;')
+			a(href='/') Home
 
-block content
+		div(style='float:right')
+			if (username && authenticated)
+				a(href='/users/signout', style='margin:10px;') Sign Out
+				a(href='/users/add_article', style='margin:10px;') Add Article
+				a(href='/users/profile', style='margin:10px;') Profile
+				span #{username}
+			else
+				a(href='/users/signin', style='margin:10px;') Log In
+				a(href='/users/register', style='margin:10px;') Register
+				a(href='/users/forget', style='margin:10px;') Forgot password
+	
+	div(style='padding:50px;')
+		h1= title
 
-	div(class='site-wrapper')
-		div(class='site-wrapper-inner')
-			div(class='cover-container')
-				div(class='masthead clearfix')
-					div(class='inner')
-						h3(class='masthead-brand')= title
-						nav
-							ul(class='nav masthead-nav')
-								li(class='active')
-									a(href='/') Home
-								
-								if(username && authenticated)
-									li
-										a(href='/users/signout') Sign Out 
-									li
-										a(href='/users/add_article') Add Article 
-									li
-										a(href='/users/profile') Profile 
-									li
-										span #{username}
-
-								else
-									li
-										a(href='/users/signin') Login 
-									li
-										a(href='/users/register') Register 						
-									li
-										a(href='/users/forget') Forget Password 
-					for blog in blogs
-						div(class='inner cover')
-							p(class='lead')= blog.username
-							p(class='lead')= blog.createDate
-							p(class='lead')= blog.article
-								a(href='/users/message/'+blog.id, style='float:right;margin-top:105px;margin-right:20px;') Leave a message
-
-
-				div(class='mastfoot')
-					div(class='inner')
-						p Cover template for 
-							a(href='http://getbootstrap.com') Bootstrap, by
-							a(href='https://twitter.com/mdo') @mdo
+	for blog in blogs
+		div
+			div(style='float:left;margin-top:10px;')= blog.username
+			div(style='float:right;margin-top:10px;')= blog.createDate
+			br
+			div(style='clear:both')= blog.article
+				a(href='/users/message/'+blog.id, style='float:right;margin-top:105px;margin-right:20px;') Leave a message
+			hr(style='margin-top:110px;')

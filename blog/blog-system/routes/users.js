@@ -43,12 +43,12 @@ router.get('/forget', function(req, res, next) {
 
 /* 使用者管理頁 */
 router.get('/profile', function(req, res, next) {
-  if((!req.session.name) || (!req.session.logined)){
+  if((!req.session.name) || (!req.session.logined)) {
     res.redirect('/');
     return;
   }
-  res.locals.username = req.session.name;
-  res.locals.authentiated = res.session.logined;
+  res.locals.username = req.session.name ;
+  res.locals.authenticated = req.session.logined;
   Blog.find({ username: req.session.name }, function(err, blogs, count){
     res.render('users/profile', {
       title: 'Blog System',
