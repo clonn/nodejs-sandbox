@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Blog = mongoose.model('Blog');
+var Comment = mongoose.model('Comment');
 
 /* GET users listing. */
 
@@ -90,12 +91,15 @@ router.get('/message/:id', function(req, res, next) {
   res.locals.authentiated = req.session.logined;
   res.locals.messageId = req.params.id;
 
-  Blog.find({_id: req.params.id}, function(err, comments, count){
-    res.render('users/message', {
-      blogs: blogs,
-      comments: comments
+  Blog.find({ _id: req.params.id }, function ( err, blogs, count ){
+    Comment.find({ messageId: req.params.id }, function ( err, comments, count ){
+      res.render( 'users/message', {
+        blogs: blogs,
+        comments: comments
+      });
     });
-  })
+  });
+
 });
 
 module.exports = router;
