@@ -89,4 +89,24 @@ router.post('/comment/:id', function(req, res, next) {
   res.redirect('/users/message/' +  req.params.id);
 });
 
+router.post('/comment/:id', function(req, res, next) {
+    if (!req.params.id) {
+        res.redirect('/');
+        return;
+    }
+    new Comment({
+        visitor: req.body.visitor,
+        comment: req.body.comment,
+        messageId: req.params.id,
+        createDate: Date.now()
+    }).save( function( err ){
+        if (err) {
+            console.log('Fail to save to DB.');
+            return;
+        }
+        console.log('Save to DB.');
+    });
+    res.redirect('/users/message/'+req.params.id);
+});
+
 module.exports = router;
