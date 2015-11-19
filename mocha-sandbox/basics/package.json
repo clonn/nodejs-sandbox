@@ -1,0 +1,29 @@
+{
+  "name": "mocha-sandbox",
+  "version": "1.0.0",
+  "description": "Mocha sandbox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alincode",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alincode/nodejs-sandbox.git"
+  },
+  "keywords": [
+    "mocha",
+    "nodejs",
+    "test"
+  ],
+  "bugs": {
+    "url": "https://github.com/alincode/nodejs-sandbox/issues"
+  },
+  "homepage": "https://github.com/alincode/nodejs-sandbox#readme"
+}
