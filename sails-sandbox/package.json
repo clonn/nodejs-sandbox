@@ -30,7 +30,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ailinliu/sails-sandbox.git"
+    "url": "git://github.com/ailinliu/nodejs-sandbox.git"
   },
   "author": "ailinliu",
   "license": ""
