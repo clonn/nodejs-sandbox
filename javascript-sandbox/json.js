@@ -2,11 +2,11 @@ var arr = [];
 
 var obj = {};
 
-var myArr = [‘one’, ’two’, ’three’]
+var myArr = ['one', 'two', 'three']
 
 var myObj = {
-     ‘name’ : ‘Alin’,
-     ‘nickname’ : ‘alincode'
+     'name' : 'Alin',
+     'nickname' : 'alincode'
 }
 
 
