@@ -23,42 +23,19 @@ var oauth = Youtube.authenticate({
   refresh_token: "1/GpkAQwgA-MWuuRpkOqp0gCihfYS-EhQ9eq1gCcHPCOtIgOrJDtdun6zK6XiATCKT",
   client_id: CREDENTIALS.web.client_id,
   client_secret: CREDENTIALS.web.client_secret,
-  redirect_url: CREDENTIALS.web.redirect_uris[0]
+  redirect_url: CREDENTIALS.web.redirect_uris[0],
+  platform: 'youtube'
 });
-
 
 oauth.refreshAccessToken(function(err, result, response){
   if (err) {
-    // lien(err, 400);
     return Logger.log(err);
   }
+  // refreshToken can map userplatform
+  console.log('response:%j', response);
   console.log("tokens: %j", result);
   oauth.setCredentials(result);
-  // lien.end(result);
+  process.exit(0)
 })
 
-// 4/Yk96JR_JXu452zdEPZgyOYXGMxWp_ekuSzfIJJ4vYDs
-
-// Opn(oauth.generateAuthUrl({
-//   access_type: "offline",
-//   scope: ["https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.upload"],
-//   approval_prompt : 'force'
-// }));
-
-// Handle oauth2 callback
-server.page.add("/oauth2callback", function(lien) {
-  Logger.log('lien:'+ lien);
-  Logger.log("Trying to get the token using the following code: " + lien.search.code);
-
-
-
-  // oauth.getToken(lien.search.code, function(err, tokens) {
-  //   if (err) {
-  //     lien(err, 400);
-  //     return Logger.log(err);
-  //   }
-  //   console.log("tokens: %j", tokens);
-  //   oauth.setCredentials(tokens);
-  //   lien.end(tokens);
-  // });
-});
+console.log('stop here...');
