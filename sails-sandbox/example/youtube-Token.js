@@ -20,45 +20,28 @@ var server = new Lien({
 // https://developers.google.com/youtube/v3/guides/moving_to_oauth#service_accounts
 var oauth = Youtube.authenticate({
   type: "oauth",
-  refresh_token: "1/GpkAQwgA-MWuuRpkOqp0gCihfYS-EhQ9eq1gCcHPCOtIgOrJDtdun6zK6XiATCKT",
   client_id: CREDENTIALS.web.client_id,
   client_secret: CREDENTIALS.web.client_secret,
   redirect_url: CREDENTIALS.web.redirect_uris[0]
 });
-
-
-oauth.refreshAccessToken(function(err, result, response){
-  if (err) {
-    // lien(err, 400);
-    return Logger.log(err);
-  }
-  console.log("tokens: %j", result);
-  oauth.setCredentials(result);
-  // lien.end(result);
-})
-
 // 4/Yk96JR_JXu452zdEPZgyOYXGMxWp_ekuSzfIJJ4vYDs
 
-// Opn(oauth.generateAuthUrl({
-//   access_type: "offline",
-//   scope: ["https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.upload"],
-//   approval_prompt : 'force'
-// }));
+Opn(oauth.generateAuthUrl({
+  access_type: "offline",
+  scope: ["https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.upload"],
+  approval_prompt : 'force'
+}));
 
 // Handle oauth2 callback
 server.page.add("/oauth2callback", function(lien) {
-  Logger.log('lien:'+ lien);
   Logger.log("Trying to get the token using the following code: " + lien.search.code);
-
-
-
-  // oauth.getToken(lien.search.code, function(err, tokens) {
-  //   if (err) {
-  //     lien(err, 400);
-  //     return Logger.log(err);
-  //   }
-  //   console.log("tokens: %j", tokens);
-  //   oauth.setCredentials(tokens);
-  //   lien.end(tokens);
-  // });
+  oauth.getToken(lien.search.code, function(err, tokens) {
+    if (err) {
+      lien(err, 400);
+      return Logger.log(err);
+    }
+    console.log("tokens:%j", tokens);
+    oauth.setCredentials(tokens);
+    lien.end(tokens);
+  });
 });
